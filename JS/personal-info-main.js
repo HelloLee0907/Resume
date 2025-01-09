@@ -306,46 +306,7 @@ $(function () {
     });
     loadMessages();
 
-    // 导航栏的active效果
-
-    document.addEventListener("DOMContentLoaded", () => {
-        const sections = document.querySelectorAll("section"); // 页面中的每个部分
-        const navLinks = document.querySelectorAll(".nav-link"); // 导航链接
-
-        const observerOptions = {
-            root: null, // 使用视口作为观察容器
-            rootMargin: "0px",
-            threshold: 0.6 // 超过60%的部分进入视口
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // 找到当前可见的部分
-                    const id = entry.target.id;
-
-                    // 移除所有导航链接的`active`类
-                    navLinks.forEach(link => {
-                        link.classList.remove("active");
-                    });
-
-                    // 为对应链接添加`active`类
-                    const activeLink = document.querySelector(`.nav-link[href="#${id}"]`);
-                    if (activeLink) activeLink.classList.add("active");
-                }
-            });
-        }, observerOptions);
-
-        // 为每个部分设置观察器
-        sections.forEach(section => observer.observe(section));
-    });
-
-    document.addEventListener("DOMContentLoaded", () => {
-    const navbarLogo = document.getElementById("navbar-logo");
-
-    // 设置图片作为链接内容
-    navbarLogo.innerHTML = `<img src="https://s1.imagehub.cc/images/2024/12/29/aedb49c561beb35fa01a3e026e36d170.png" alt="图标97" border="0" style="max-width: 100px; height: auto;"> `;
-    });
+    
 
     // ----- END ------
 
@@ -358,4 +319,44 @@ $(function () {
     //----END---
 
 
+});
+// 导航栏的active效果
+
+document.addEventListener("DOMContentLoaded", () => {
+    const sections = document.querySelectorAll("section"); // 页面中的每个部分
+    const navLinks = document.querySelectorAll(".nav-link"); // 导航链接
+
+    const observerOptions = {
+        root: null, // 使用视口作为观察容器
+        rootMargin: "0px",
+        threshold: 0.6 // 超过60%的部分进入视口
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // 找到当前可见的部分
+                const id = entry.target.id;
+
+                // 移除所有导航链接的`active`类
+                navLinks.forEach(link => {
+                    link.classList.remove("active");
+                });
+
+                // 为对应链接添加`active`类
+                const activeLink = document.querySelector(`.nav-link[href="#${id}"]`);
+                if (activeLink) activeLink.classList.add("active");
+            }
+        });
+    }, observerOptions);
+
+    // 为每个部分设置观察器
+    sections.forEach(section => observer.observe(section));
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+const navbarLogo = document.getElementById("navbar-logo");
+
+// 设置图片作为链接内容
+navbarLogo.innerHTML = `<img src="https://s1.imagehub.cc/images/2024/12/29/aedb49c561beb35fa01a3e026e36d170.png" alt="图标97" border="0" style="max-width: 100px; height: auto;"> `;
 });
